@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "Rollup Plugin for serving dynamic imports from a chosen base URL such as /",
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "scripts": {
-    "test": "ava"
+    "test": "ava test/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/kim366/rollup-plugin-public-dir/issues"
   },
-  "homepage": "https://github.com/kim366/rollup-plugin-public-dir#readme"
+  "homepage": "https://github.com/kim366/rollup-plugin-public-dir#readme",
+  "devDependencies": {
+    "ava": "^3.15.0",
+    "rollup": "^2.41.1"
+  }
 }
