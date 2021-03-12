@@ -1,6 +1,6 @@
 const test = require('ava');
 const rollup = require('rollup');
-const { baseDir } = require('../index.js');
+const { baseUrl } = require('../index.js');
 
 function checkOutput(t, plugins, regex) {
   return rollup.rollup({
@@ -21,17 +21,17 @@ test('Chunk has relative path without plugin',
 
 test('Chunk has absolute path with plugin',
   checkOutput,
-  [baseDir()],
+  [baseUrl()],
   /import\(['"]\/chunk-[0-9a-f]+\.js['"]/);
 
 test('Chunk has custom absolute path with plugin when specified',
   checkOutput,
-  [baseDir({ url: '/mypath' })],
+  [baseUrl({ url: '/mypath' })],
   /import\(['"]\/mypath\/chunk-[0-9a-f]+\.js['"]/);
 
 test('Chunk has custom absolute path with plugin when specified with dollars',
   checkOutput,
-  [baseDir({ url: '/$1my$1path$1' })],
+  [baseUrl({ url: '/$1my$1path$1' })],
   /import\(['"]\/\$1my\$1path\$1\/chunk-[0-9a-f]+\.js['"]/);
 
 // --
@@ -43,15 +43,15 @@ test('Chunk2 has relative path without plugin',
 
 test('Chunk2 has absolute path with plugin',
   checkOutput,
-  [baseDir()],
+  [baseUrl()],
   /import\(['"]\/chunk2-[0-9a-f]+\.js['"]/);
 
 test('Chunk2 has custom absolute path with plugin when specified',
   checkOutput,
-  [baseDir({ url: '/mypath' })],
+  [baseUrl({ url: '/mypath' })],
   /import\(['"]\/mypath\/chunk2-[0-9a-f]+\.js['"]/);
 
 test('Chunk2 has custom absolute path with plugin when specified with dollars',
   checkOutput,
-  [baseDir({ url: '/$1my$1path$1' })],
+  [baseUrl({ url: '/$1my$1path$1' })],
   /import\(['"]\/\$1my\$1path\$1\/chunk2-[0-9a-f]+\.js['"]/);
