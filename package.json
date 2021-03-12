@@ -1,0 +1,24 @@
+{
+  "name": "rollup-plugin-base-dir",
+  "version": "0.0.1",
+  "description": "Rollup Plugin for serving dynamic imports from a chosen base URL such as /",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kim366/rollup-plugin-public-dir.git"
+  },
+  "keywords": [
+    "rollup-plugin",
+    "base-dir",
+    "prerender"
+  ],
+  "author": "Kim Schmider",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kim366/rollup-plugin-public-dir/issues"
+  },
+  "homepage": "https://github.com/kim366/rollup-plugin-public-dir#readme"
+}
