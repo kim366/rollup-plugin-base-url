@@ -1,7 +1,7 @@
 {
   "name": "rollup-plugin-base-url",
   "version": "0.0.1",
-  "description": "Rollup Plugin for serving dynamic imports from a chosen base URL such as /",
+  "description": "Rollup Plugin for serving imports from a chosen base URL such as /",
   "main": "index.js",
   "files": [
     "index.js"

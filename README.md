@@ -1,6 +1,6 @@
 # rollup-plugin-base-url
 
-Allows dynamic imports to be loaded from an absolute URL, such as `/`.
+Allows dynamic (and optionally static) imports to be loaded from an absolute URL, such as `/`.
 
 ## Why?
 
@@ -24,6 +24,7 @@ export default {
   plugins: [
     baseUrl({
       url: '/forum', // the base URL prefix; optional, defaults to /
+      staticImports: true, // also rebases static `import _ from "…"`; optional, defaults to false
     }),
   ],
 };

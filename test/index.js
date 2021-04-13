@@ -4,7 +4,7 @@ const { baseUrl } = require('../index.js');
 
 function checkOutput(t, plugins, regex) {
   return rollup.rollup({
-    input: 'test/bundle/index.js'
+    input: ['test/bundle/index.js', 'test/bundle/index2.js']
   }).then(bundle => bundle.generate({
     plugins
   })).then(({ output }) => {
@@ -55,3 +55,30 @@ test('Chunk2 has custom absolute path with plugin when specified with dollars',
   checkOutput,
   [baseUrl({ url: '/$1my$1path$1' })],
   /import\(['"]\/\$1my\$1path\$1\/chunk2-[0-9a-f]+\.js['"]/);
+
+// --
+
+test('Static import has relative path without plugin',
+  checkOutput,
+  [],
+  /import \{ s \} from ['"]\.\/static-chunk-[0-9a-f]+\.js['"]/);
+
+test('Static import has relative path with plugin without staticImports',
+  checkOutput,
+  [baseUrl()],
+  /import \{ s \} from ['"]\.\/static-chunk-[0-9a-f]+\.js['"]/);
+
+test('Static import has absolute path with plugin and staticImports',
+  checkOutput,
+  [baseUrl({ staticImports: true })],
+  /import \{ s \} from ['"]\/static-chunk-[0-9a-f]+\.js['"]/);
+
+test('Static import has custom absolute path with plugin when specified',
+  checkOutput,
+  [baseUrl({ url: '/mypath', staticImports: true })],
+  /import \{ s \} from ['"]\/mypath\/static-chunk-[0-9a-f]+\.js['"]/);
+
+test('Static import has custom absolute path with plugin when specified with dollars',
+  checkOutput,
+  [baseUrl({ url: '/$1my$1path$1', staticImports: true })],
+  /import \{ s \} from ['"]\/\$1my\$1path\$1\/static-chunk-[0-9a-f]+\.js['"]/);
